@@ -4,14 +4,19 @@ import { Card } from './components/Card'
 import { Button } from './components/Button'
 import { PlusIcon } from './icons/PlusIcon';
 import { ShareIcon } from './icons/ShareIcon';
+import { CreateContentModal } from './components/CreateContentModal';
+import { useState } from 'react';
  function App() {
-
+  const [modalOpen , setModalOpen] = useState(true);
   return (
+    
     <>
+    <CreateContentModal open={modalOpen} onClose={()=>{
+      setModalOpen(false);
+    }}/>
       <div>
 
-      <Button variant="primary" size="md" onClick={()=>{console.log("chl pea");
-      }} text="Add Content" startIcon={<PlusIcon/>} /> 
+      <Button  variant="primary" size="md" onClick={()=>setModalOpen(true)} text="Add Content" startIcon={<PlusIcon/>}  /> 
 
       <Button variant="secondary" size="sm" onClick={()=>{console.log("chl pea");
       }} text="Share" startIcon={<ShareIcon/>} />

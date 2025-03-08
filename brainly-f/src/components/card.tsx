@@ -10,7 +10,8 @@ interface CardProps {
 export const Card = ({title,link,type}:CardProps) =>{
   return(
     <>
-        <div className="p-4 bg-slate-300 rounded-md  border-gray-300 max-w-72 border-2">
+    
+        <div className="p-4 bg-slate-300 rounded-md  border-gray-300 max-w-72 border-2 h-full">
                   <div className="flex justify-between flex-row items-center ">
                             <div className="flex">
                               <div className="pr-2">
