@@ -43,10 +43,12 @@ export const Card = ({title,link,type}:CardProps) =>{
                   { type=="youtube" &&    <iframe className="w-full h-full" width="560" height="315" src={link.replace("youtu.be","www.youtube.com/embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                   }
                  
-
+                      
                 { type=="twitter" &&    <blockquote className="twitter-tweet">
                     <a href={link.replace("x.com","twitter.com")}></a> 
                 </blockquote>}
+
+                
 
                   </div>  
 
