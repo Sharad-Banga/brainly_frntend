@@ -77,8 +77,8 @@ export function CreateContentModal({open , onClose}){
 }
 
 
-export function Input({reference,placeholder,type}:{ placeholder:string; type:string; reference:any}){
+export function Input({reference,placeholder,type,widthh}:{ placeholder:string; type:string; reference:any}){
   return(
-    <input ref={reference}  placeholder={placeholder} type={type} className="p-3 ml-4 mt-3 border-emerald-200 w-64" />
+    <input ref={reference}  placeholder={placeholder} type={type} className={`p-3 m-3 w${widthh} outline-none  w-64`}/>
   )
 }
