@@ -1,35 +1,39 @@
+import { LinkIcon } from "../icons/LinkIcon";
 import { ShareIcon } from "../icons/ShareIcon";
-import { TwitterIcon } from "../icons/TwitterIcon"; // Assuming you have a Twitter icon
+import { TwitterIcon } from "../icons/TwitterIcon";
 import { YtIcon } from "../icons/YtIcon";
 
 interface CardProps {
   title: string;
   link: string;
-  type: "twitter" | "youtube";
+  type: "twitter" | "youtube" | "Link";
 }
 
 export const Card = ({ title, link, type }: CardProps) => {
   // Function to get the icon based on content type
   const getTypeIcon = () => {
-    if (type === "youtube") return <YtIcon  />;
-    if (type === "twitter") return <TwitterIcon  />;
+    if (type === "youtube") return <YtIcon />;
+    if (type === "twitter") return <TwitterIcon />;
+    if (type === "Link") return <LinkIcon />;
     return null;
   };
 
+
+
   return (
-    <div className="bg-white  rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
       {/* Card Header */}
-      <div className="p-4  border-b border-gray-100">
+      <div className="p-4 border-b border-gray-100">
         <div className="flex h-5 justify-between items-center">
           <div className="flex items-center gap-2 font-medium truncate" title={title}>
             {getTypeIcon()}
             <span className="text-gray-800">{title}</span>
           </div>
           
-          <div className="flex  items-center gap-2">
+          <div className="flex items-center gap-2">
             <button 
-              className="text-gray-500 hover:text-gray-700 transition-colors"
-              onClick={() => window.open(link, '_blank')}
+              className="text-gray-500 hover:text-green-700 transition-colors"
+              onClick={() => window.open(link.startsWith("http") ? link : `https://${link}`, '_blank')}
               title="Open link"
             >
               <ShareIcon />
@@ -61,7 +65,7 @@ export const Card = ({ title, link, type }: CardProps) => {
         )}
         
         {type === "twitter" && (
-          <div >
+          <div>
             <blockquote className="twitter-tweet mb-2">
               <a href={link.replace("x.com", "twitter.com")}></a>
             </blockquote>
@@ -72,6 +76,19 @@ export const Card = ({ title, link, type }: CardProps) => {
             </div>
           </div>
         )}
+
+        {type === "Link" && (
+          <div className="flex flex-col">
+            <div>
+            <div className="text-sm text-blue-500 mt-3">
+              <a href={link.startsWith("http") ? link : `https://${link}`} target="_blank" rel="noopener noreferrer">
+                {link}
+              </a>
+            </div>
+          </div>
+          </div>
+        )}
+        
       </div>
     </div>
   );

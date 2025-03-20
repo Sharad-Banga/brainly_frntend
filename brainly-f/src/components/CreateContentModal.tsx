@@ -5,7 +5,8 @@ import { BACK_URL } from "../config";
 
  enum ContentType {
   Youtube = "youtube",
-  Twitter = "twitter"
+  Twitter = "twitter",
+  Link = "Link"
  }
 
 export function CreateContentModal({open , onClose}){
@@ -58,6 +59,7 @@ export function CreateContentModal({open , onClose}){
                   <div className="flex justify-center gap-8 mt-2">
                     <Button text="Youtube" variant={type === ContentType.Youtube?"primary":"secondary"} onClick={()=>setType(ContentType.Youtube)} />
                     <Button text="Twitter" variant={type === ContentType.Twitter?"primary":"secondary"} onClick={()=>setType(ContentType.Twitter)} />
+                    <Button text="Link" variant={type === ContentType.Link?"primary":"secondary"} onClick={()=>setType(ContentType.Link)} />
                   </div>
 
                   <div className="flex justify-center mt-3" >

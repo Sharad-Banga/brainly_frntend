@@ -26,7 +26,7 @@ export function Dashboard() {
           onClose={() => setModalOpen(false)}
         />
 
-        <div className="fixed mb-6 flex justify-between items-center  w-[78%]">
+        <div className="fixed mb-6 flex justify-between items-center bg-white  w-[78%]">
           <h1 className="text-2xl font-bold text-gray-800">My Content</h1>
 
           <div className="w-[30%] search flex justify-evenly items-center  h-14 border-gray-300 border-2 rounded-full">
@@ -57,7 +57,7 @@ export function Dashboard() {
         <div className='mt-24'>
           <hr />
 
-          <div className=" mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className=" mt-3 grid grid-cols-auto-fit gap-6">
           {contents.map(({ type, link, title }, index) => (
             <Card key={index} type={type} link={link} title={title} />
           ))}

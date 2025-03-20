@@ -21,9 +21,12 @@ export function SignIn(){
       password
     })
 
-    const jwt = response.data.token;
-    localStorage.setItem("token",jwt);
-    navigate("/dashboard")
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
+      navigate("/dashboard");
+    } else if (response.data.message) {
+      alert(response.data.message); 
+    }
   }
 
 
