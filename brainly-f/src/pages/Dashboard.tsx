@@ -11,10 +11,40 @@ import { Searchbar } from '../icons/Searchbar';
 
 export function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
-  const contents = useContent();
+  const { contents, setContents } = useContent();
+
 
   const searchQueryRef = useRef("");
 
+
+  const handleDelete = async (id: string) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.error("No token found!");
+        return;
+      }
+  
+      const response = await fetch(`http://localhost:3000/api/v1/content/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      });
+  
+      if (response.ok) {
+        setContents((prevContents) => prevContents.filter((content) => content._id !== id));
+        console.log("Deleted successfully");
+      } else {
+        const errorResponse = await response.json();
+        console.error("Failed to delete content:", errorResponse.message);
+      }
+    } catch (error) {
+      console.error("Error deleting content:", error);
+    }
+  };
+  
 
   return (
     <div className="flex">
@@ -57,9 +87,9 @@ export function Dashboard() {
         <div className='mt-24'>
           <hr />
 
-          <div className=" mt-3 grid grid-cols-auto-fit gap-6">
-          {contents.map(({ type, link, title }, index) => (
-            <Card key={index} type={type} link={link} title={title} />
+          <div className=" mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 grid-auto-flow-dense">
+          {contents.map(({_id, type, link, title  }, index) => (
+            <Card key={_id} id={_id} type={type} link={link} title={title}  onDelete={handleDelete}/>
           ))}
         </div>
 

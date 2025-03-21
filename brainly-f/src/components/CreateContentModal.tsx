@@ -3,6 +3,8 @@ import { Button } from "./Button";
 import axios from "axios";
 import { BACK_URL } from "../config";
 
+
+
  enum ContentType {
   Youtube = "youtube",
   Twitter = "twitter",
@@ -10,6 +12,9 @@ import { BACK_URL } from "../config";
  }
 
 export function CreateContentModal({open , onClose}){
+
+// const [itemCountInc ,setItemCountInc] = useState(0);
+
 
   const titleRef = useRef<any>("");
   const linkRef = useRef<any>("");
@@ -28,7 +33,9 @@ export function CreateContentModal({open , onClose}){
         "Authorization": localStorage.getItem("token")
       }
     })
-
+    onClose();
+    // setItemCountInc(r=>r+1);
+    window.location.reload();
     console.log("hehehehehe",type);
     
   }

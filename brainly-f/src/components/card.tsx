@@ -1,15 +1,19 @@
+import { DeleteIcon } from "../icons/DeleteIcon";
 import { LinkIcon } from "../icons/LinkIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import { TwitterIcon } from "../icons/TwitterIcon";
 import { YtIcon } from "../icons/YtIcon";
 
 interface CardProps {
+  key:string;
+  id : string;
   title: string;
   link: string;
   type: "twitter" | "youtube" | "Link";
+  onDelete: (id: string) => void;
 }
 
-export const Card = ({ title, link, type }: CardProps) => {
+export const Card = ({id, title, link, type,onDelete  }: CardProps) => {
   // Function to get the icon based on content type
   const getTypeIcon = () => {
     if (type === "youtube") return <YtIcon />;
@@ -23,7 +27,7 @@ export const Card = ({ title, link, type }: CardProps) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
       {/* Card Header */}
-      <div className="p-4 border-b border-gray-100">
+      <div className="p-4  border-b border-gray-100">
         <div className="flex h-5 justify-between items-center">
           <div className="flex items-center gap-2 font-medium truncate" title={title}>
             {getTypeIcon()}
@@ -41,8 +45,9 @@ export const Card = ({ title, link, type }: CardProps) => {
             <button 
               className="text-gray-500 hover:text-red-500 transition-colors"
               title="Remove"
+              onClick={() => onDelete(id)}
             >
-              <ShareIcon />
+              <DeleteIcon/>
             </button>
           </div>
         </div>
@@ -69,10 +74,7 @@ export const Card = ({ title, link, type }: CardProps) => {
             <blockquote className="twitter-tweet mb-2">
               <a href={link.replace("x.com", "twitter.com")}></a>
             </blockquote>
-            <div className="text-sm text-blue-500 mt-3">
-              <a href={link} target="_blank" rel="noopener noreferrer">
-                View on Twitter →
-              </a>
+            <div className="text-sm text-blue-500 mt-3 bt-2">
             </div>
           </div>
         )}
@@ -80,7 +82,7 @@ export const Card = ({ title, link, type }: CardProps) => {
         {type === "Link" && (
           <div className="flex flex-col">
             <div>
-            <div className="text-sm text-blue-500 mt-3">
+            <div className="text-sm text-blue-500 mt-3 ">
               <a href={link.startsWith("http") ? link : `https://${link}`} target="_blank" rel="noopener noreferrer">
                 {link}
               </a>

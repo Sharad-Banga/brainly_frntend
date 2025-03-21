@@ -24,5 +24,5 @@ export function useContent(){
   console.log(contents);
   
 
-  return contents;
+  return {contents,setContents};
 }
