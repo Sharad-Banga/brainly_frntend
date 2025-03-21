@@ -2,7 +2,7 @@
 
 
 export interface ButtonProps{
-  variant : "primary" | "secondary"|"sign";
+  variant : "primary" | "secondary"|"sign"|"nclicked"|"clicked"|"submit";
   size : "sm"|"md"|"lg";
   text : string;
   startIcon : any;
@@ -11,9 +11,12 @@ export interface ButtonProps{
 }
 
 const variantStyles = {
-  "primary":"bg-purple-600 text-white",
-  "secondary":"bg-purple-300 text-purple-700",
-  "sign" : "bg-[#1e8682] w-full flex justify-center text-white"
+  "primary":"bg-[#1e8682] text-white",
+  "secondary":"bg-[#41c0b6] text-black",
+  "sign" : "bg-[#1e8682] w-full flex justify-center text-white",
+  "clicked" : "bg-white border-2 border-white/50 p-2 h-2 text-black text-[13px]",
+  "nclicked" : "bg-black border-2 border-white/50 text-[12px] h-2 p-2 text-white",
+  "submit" : "bg-red-500 w-[85%] flex justify-center h-[10%] mb-4"
 }
 
 const sizeStyles = {

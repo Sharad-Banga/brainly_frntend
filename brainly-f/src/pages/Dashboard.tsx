@@ -3,18 +3,18 @@ import { Card } from '../components/Card'
 import { Button } from '../components/Button'
 import { PlusIcon } from '../icons/PlusIcon';
 import { ShareIcon } from '../icons/ShareIcon';
-import { CreateContentModal, Input } from '../components/CreateContentModal';
-import { useRef, useState } from 'react';
+import { CreateContentModal } from '../components/CreateContentModal';
+import { useState } from 'react';
 import { Sidebar } from '../components/Sidebar';
 import { useContent } from '../hooks/useContent';
-import { Searchbar } from '../icons/Searchbar';
+// import { Searchbar } from '../icons/Searchbar';
 
 export function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
   const { contents, setContents } = useContent();
 
 
-  const searchQueryRef = useRef("");
+  // const searchQueryRef = useRef("");
 
 
   const handleDelete = async (id: string) => {
@@ -44,10 +44,15 @@ export function Dashboard() {
       console.error("Error deleting content:", error);
     }
   };
+
+
+  const handleShare = () =>{
+    
+  }
   
 
   return (
-    <div className="flex">
+    <div className="flex bg-[url('./images/bg-2.png')] h-screen">
       <Sidebar />
       
       <div className="flex-1 p-6 ml-72">
@@ -56,13 +61,13 @@ export function Dashboard() {
           onClose={() => setModalOpen(false)}
         />
 
-        <div className="fixed mb-6 flex justify-between items-center bg-white  w-[78%]">
-          <h1 className="text-2xl font-bold text-gray-800">My Content</h1>
+        <div className="fixed  flex justify-between items-center   w-[78%]">
+          <h1 className="text-2xl font-bold text-white">My Content</h1>
 
-          <div className="w-[30%] search flex justify-evenly items-center  h-14 border-gray-300 border-2 rounded-full">
+          {/* <div className="w-[30%] search flex justify-evenly items-center  h-14 border-gray-300 border-2 rounded-full">
             <Input widthh="-[70%]"  placeholder='Search' type="string" reference={searchQueryRef} />
             <Searchbar/>
-          </div>
+          </div> */}
           
           <div className="flex gap-3">
             <Button
@@ -75,7 +80,7 @@ export function Dashboard() {
             <Button
               variant="secondary"
               size="sm"
-              onClick={() => { console.log("Share clicked"); }}
+              onClick={handleShare}
               text="Share"
               startIcon={<ShareIcon />}
             />
@@ -84,10 +89,10 @@ export function Dashboard() {
 
         
 
-        <div className='mt-24'>
+        <div className='mt-20'>
           <hr />
 
-          <div className=" mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 grid-auto-flow-dense">
+          <div className=" mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 grid-auto-flow-dense">
           {contents.map(({_id, type, link, title  }, index) => (
             <Card key={_id} id={_id} type={type} link={link} title={title}  onDelete={handleDelete}/>
           ))}
