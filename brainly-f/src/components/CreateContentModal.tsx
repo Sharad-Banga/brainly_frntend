@@ -88,6 +88,6 @@ export function CreateContentModal({open , onClose}){
 
 export function Input({reference,placeholder,type,widthh}:{ placeholder:string; type:string; reference:any}){
   return(
-    <input ref={reference}  placeholder={placeholder} type={type} className={`p-3 m-3 w${widthh} outline-none  w-64`}/>
+    <input ref={reference}  placeholder={placeholder} type={type} className={`w-full p-2 mt-2 mb-2 rounded-md bg-black/30 text-white border border-white/10 w${widthh} outline-none  w-64`}/>
   )
 }

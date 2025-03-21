@@ -2,7 +2,7 @@
 
 
 export interface ButtonProps{
-  variant : "primary" | "secondary";
+  variant : "primary" | "secondary"|"sign";
   size : "sm"|"md"|"lg";
   text : string;
   startIcon : any;
@@ -12,8 +12,8 @@ export interface ButtonProps{
 
 const variantStyles = {
   "primary":"bg-purple-600 text-white",
-  "secondary":"bg-purple-300 text-purple-700"
-
+  "secondary":"bg-purple-300 text-purple-700",
+  "sign" : "bg-[#1e8682] w-full flex justify-center text-white"
 }
 
 const sizeStyles = {

@@ -1,3 +1,5 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://geist-fonts.vercel.app/css/mono.css');
