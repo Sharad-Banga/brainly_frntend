@@ -25,7 +25,7 @@ export function Dashboard() {
         return;
       }
   
-      const response = await fetch(`http://localhost:3000/api/v1/content/${id}`, {
+      const response = await fetch(`https://aristol-be.onrender.com/api/v1/content/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -47,12 +47,12 @@ export function Dashboard() {
 
 
   const handleShare = () =>{
-    
+
   }
   
 
   return (
-    <div className="flex bg-[url('./images/bg-2.png')] h-screen">
+    <div className="flex bg-[url('./images/bg-2.png')] h-screen flex-col">
       <Sidebar />
       
       <div className="flex-1 p-6 ml-72">
@@ -101,6 +101,9 @@ export function Dashboard() {
         </div>
         
       </div>
+      <div className="mt-auto p-4 text-center text-white text-sm ">
+                Developed and Designed By <a className="text-[#2AB7B1] hover:text-[#1e8682] transition-colors duration-300" href="https://x.com/sharad_banga" target="_blank" rel="noopener noreferrer">sharad banga</a>
+              </div>
     </div>
   )
 }
