@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": {
+ "scripts": {
   "dev": "vite",
-  "build": "node ./node_modules/.bin/vite build",
+  "build": "npx vite build",
   "preview": "vite preview"
 },
   "dependencies": {
