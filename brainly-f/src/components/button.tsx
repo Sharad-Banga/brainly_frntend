@@ -3,9 +3,9 @@
 
 export interface ButtonProps{
   variant : "primary" | "secondary"|"sign"|"nclicked"|"clicked"|"submit";
-  size : "sm"|"md"|"lg";
+  size? : "sm"|"md"|"lg";
   text : string;
-  startIcon : any;
+  startIcon? : any;
   endIcon? : any;
   onClick : ()=> void;
 }
@@ -30,7 +30,7 @@ const defaultStyles = "rounded-md p-4";
 
 export const Button = (props :ButtonProps) =>{
   return(
-    <button className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]} flex items-center gap-2 `}
+    <button className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size || 'md']} flex items-center gap-2 `}
      onClick={props.onClick} > {props.startIcon} {props.text} </button>
   )
 }

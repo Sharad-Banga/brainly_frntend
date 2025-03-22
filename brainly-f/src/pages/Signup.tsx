@@ -3,7 +3,7 @@ import { Button } from "../components/Button";
 import { Input } from "../components/CreateContentModal";
 import axios from "axios";
 import { BACK_URL } from "../config";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 
 export function Signup(){
@@ -29,6 +29,8 @@ export function Signup(){
         username,
         password,
       });
+      console.log(response);
+      
 
       alert("Signed up successfully");
       navigate("/signin");

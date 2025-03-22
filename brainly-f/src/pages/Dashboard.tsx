@@ -10,6 +10,7 @@ import { useContent } from '../hooks/useContent';
 // import { Searchbar } from '../icons/Searchbar';
 
 export function Dashboard() {
+  
   const [modalOpen, setModalOpen] = useState(false);
   const { contents, setContents } = useContent();
 
@@ -33,7 +34,7 @@ export function Dashboard() {
         },
       });
   
-      if (response.ok) {
+      if (response.ok ) {
         setContents((prevContents) => prevContents.filter((content) => content._id !== id));
         console.log("Deleted successfully");
       } else {
@@ -93,8 +94,8 @@ export function Dashboard() {
           <hr />
 
           <div className=" mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 grid-auto-flow-dense">
-          {contents.map(({_id, type, link, title  }, index) => (
-            <Card key={_id} id={_id} type={type} link={link} title={title}  onDelete={handleDelete}/>
+          {contents.map(({_id, type, link, title  }) => (
+            <Card key={_id} id={_id} type={type as "twitter" | "youtube" | "Link"} link={link} title={title}  onDelete={handleDelete}/>
           ))}
         </div>
 

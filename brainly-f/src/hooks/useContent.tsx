@@ -3,8 +3,16 @@ import { BACK_URL } from "../config";
 import axios from "axios";
 
 
+interface Content {
+  _id: string;
+  type: string;
+  link: string;
+  title: string;
+}
+
+
 export function useContent(){
-  const [contents , setContents] = useState([]);
+  const [contents , setContents] = useState<Content[]>([]);
 
   useEffect(()=>{
 
